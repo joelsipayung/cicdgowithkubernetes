@@ -1,10 +1,11 @@
----
 apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: mytaskgo
+  labels:
+    app: mytaskgo
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       app: mytaskgo
@@ -14,10 +15,12 @@ spec:
         app: mytaskgo
     spec:
       containers:
-      - name: mytaskgo
-        image: joelsipayung/cicdjenkinskubego:latest
-        imagePullPolicy: Always
-        
+        - name: mytaskgo
+          image: joelsipayung/cicdjenkinskubego:latest
+          imagePullPolicy: Always
+          ports:
+            - name: http-ports
+              containerPort: 80
 
 ---
 apiVersion: v1
@@ -26,10 +29,8 @@ metadata:
   name: mytaskgo
 spec:
   ports:
-  - nodePort: 32111
-    port: 80
+  - port: 80
     protocol: TCP
-    targetPort: 80
+    targetPort: http-ports
   selector:
     app: mytaskgo
-  type: NodePort

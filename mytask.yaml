@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: mytaskgo
-          image: 'joelsipayung/cicdjenkinskubego:latest'
+          image: 'joelsipayung/cicdkubewithgo:latest'
           imagePullPolicy: Always
           ports:
             - name: http-ports

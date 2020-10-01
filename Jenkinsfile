@@ -33,13 +33,18 @@ pipeline {
       }
     }
 
-    stage('Deploy App') {
+
+   stage('Deploy App') {
       steps {
         script {
-          kubernetesDeploy(configs: "mytask.yml", kubeconfigId: "mykubeconfigku")
+          kubeconfig(credentialsId: 'mykubeconfig', serverUrl: 'https://usw1.kubesail.com') {
+            sh 'kubectl apply -f mytask.yaml'
+          }
         }
       }
     }
+
+
   }
 
 }

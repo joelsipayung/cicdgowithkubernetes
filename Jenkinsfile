@@ -13,7 +13,7 @@ pipeline {
     stage('Build image') {
       steps{
         script {
-          dockerImage = docker.build("joelsipayung/hellowhale:${env.BUILD_ID}")
+          dockerImage = docker.build("joelsipayung/cicdkubewithgo:${env.BUILD_ID}")
         }
       }
     }

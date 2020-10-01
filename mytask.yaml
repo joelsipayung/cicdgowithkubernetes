@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: mytaskGo
-      	image: joelsipayung/cicdjenkinskubego:latest
+        image: joelsipayung/cicdjenkinskubego:latest
         imagePullPolicy: Always
         
 

@@ -1,10 +1,5 @@
 pipeline {
 
-  environment {
-    registry = "joelsipayung/cicdjenkinskubego"
-    dockerImage = ""
-  }
-
   agent any
 
   stages {
@@ -18,7 +13,7 @@ pipeline {
     stage('Build image') {
       steps{
         script {
-          dockerImage = docker.build (registry(":${env.BUILD_NUMBER}"))
+          dockerImage = docker.build("joelsipayung/hellowhale:${env.BUILD_ID}")
         }
       }
     }

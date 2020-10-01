@@ -18,6 +18,8 @@ spec:
         - name: mytaskgo
           image: joelsipayung/cicdjenkinskubego:latest
           imagePullPolicy: Always
+	imagePullSecret:
+	- name: regcred
           ports:
             - name: http-ports
               containerPort: 80

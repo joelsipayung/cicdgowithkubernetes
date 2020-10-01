@@ -35,6 +35,7 @@ pipeline {
         script {
           kubeconfig(credentialsId: 'mykubeconfig', serverUrl: 'https://usw1.kubesail.com') {
             sh 'kubectl apply -f mytask.yaml'
+            sh "kubectl set image deployment/mytaskgo mytaskgo=joelsipayung/cicdkubewithgo:'${env.BUILD_ID}'"
           }
         }
       }

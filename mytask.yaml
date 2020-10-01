@@ -16,13 +16,13 @@ spec:
     spec:
       containers:
         - name: mytaskgo
-          image: joelsipayung/cicdjenkinskubego:latest
+          image: 'joelsipayung/cicdjenkinskubego:latest'
           imagePullPolicy: Always
           ports:
             - name: http-ports
               containerPort: 80
       imagePullSecrets:
-	      - name: regcred
+        - name: regcred
 
 ---
 apiVersion: v1

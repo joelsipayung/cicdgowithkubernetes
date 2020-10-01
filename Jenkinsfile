@@ -36,11 +36,10 @@ pipeline {
     stage('Deploy App') {
       steps {
         script {
-          kubernetesDeploy(configs: "mytask.yaml", kubeconfigId: "mykubeconfigku")
+          kubernetesDeploy(configs: "mytask.yml", kubeconfigId: "mykubeconfigku")
         }
       }
     }
-
   }
 
 }

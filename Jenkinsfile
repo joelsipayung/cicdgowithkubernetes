@@ -18,7 +18,7 @@ pipeline {
     stage('Build image') {
       steps{
         script {
-          dockerImage = docker.build registry + ":$BUILD_NUMBER"
+          dockerImage = docker.build (registry)
         }
       }
     }
@@ -26,8 +26,9 @@ pipeline {
     stage('Push Image') {
       steps{
         script {
-          docker.withRegistry( "" ) {
-            dockerImage.push()
+          docker.withRegistry( 'https://registry.hub.docker.com', 'joelsipayung' ) {
+            dockerImage.push("${env.BUILD_NUMBER}")
+            dockerImages.push("latest")
           }
         }
       }
